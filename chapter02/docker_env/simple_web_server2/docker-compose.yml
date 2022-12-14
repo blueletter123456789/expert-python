@@ -1,0 +1,10 @@
+version: '3'
+services: 
+  webserver: 
+    # カレントディレクトリのDockerfileを基にイメージを作成
+    build: .
+    # docker runの-pオプションと同様
+    ports: 
+      - "80:80"
+    # docker runの-tオプションと同様
+    tty: true

@@ -1,0 +1,14 @@
+# パッケージマネージャの説明のため、Pythonとpipがデフォルトで入っていない
+# ベースのAlpineを使用
+# Pythonプロジェクトではpython:3.9-alpineを使用
+FROM alpine:3.12
+
+# ベースのAlpineパッケージに含まれないPython3をインストール
+RUN apk add python3
+
+# 複数のコマンドを１つのRUN命令で実行することで、全てのコマンドが実行完了した後だけに
+# イメージのれいやがコミットされるようになるため、apk del py3-pip実行後の
+# イメージサイズを縮小することができる
+RUN apk add py3-pip &&
+   pip3 install django &&
+   api del py3-pip
